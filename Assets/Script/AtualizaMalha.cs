@@ -19,10 +19,11 @@ public class AtualizaMalha : MonoBehaviour
 
     public void atualizaVertice(PontosClicaveis ob)
     {
-        foreach(int p in ob.vertices)
-        {
-            listaVertices[p] += ob.movimento;
-        }
+        // foreach(int p in ob.vertices)
+        // {
+        //     listaVertices[p] += ob.movimento;
+        // }
+        listaVertices[ob.indice] += ob.movimento;
         for(int i = 0; i < listaVertices.Length; i++)
         {
             if(listaVertices[i].x == ob.posAnterior.x && listaVertices[i].y == ob.posAnterior.y && listaVertices[i].z > 0)

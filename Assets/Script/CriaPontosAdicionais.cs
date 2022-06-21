@@ -8,8 +8,10 @@ public class CriaPontosAdicionais : MonoBehaviour
     public GameObject novoPontoPrefab;
     // List<PontosClicaveis> pontos = new List<PontosClicaveis>();
     List<Vector3> medias = new List<Vector3>();
-    Dictionary<Vector3, int> dicionario = new Dictionary<Vector3, int>();
+    Dictionary<PontoTemporario, int> dictPontoTemp = new Dictionary<PontoTemporario, int>();
     Dictionary<Vector3, PontosClicaveis> pontos = new Dictionary<Vector3, PontosClicaveis>();
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,13 +45,13 @@ public class CriaPontosAdicionais : MonoBehaviour
     void adicionaAresta(Vector3 p, Vector3 pv)
     //Conta quantidade aresta com dicionario
     {
-        Vector3 novaMedia = (p + pv)/2;
-        int atual;
-        if(!dicionario.TryGetValue(novaMedia, out atual))
+        PontoTemporario novoPonto = new PontoTemporario(pontos[p], pontos[pv]);
+        int repeticao;
+        if(!dictPontoTemp.TryGetValue(novoPonto, out repeticao))
         {
-            atual = 0;
+            repeticao = 0;
         } 
-        dicionario[novaMedia] = atual+1;
+        dictPontoTemp[novoPonto] = repeticao + 1;
     }
 
     void TiraMediaPontos()
@@ -66,28 +68,23 @@ public class CriaPontosAdicionais : MonoBehaviour
             adicionaAresta(ms.vertices[msT[i+1]], ms.vertices[msT[i+2]]);
             adicionaAresta(ms.vertices[msT[i+2]], ms.vertices[msT[i]]);
         }
-        foreach(KeyValuePair<Vector3, int> kvp in dicionario)
-        {
-            if(kvp.Value == 1)
-            {
-                medias.Add(kvp.Key);
-            }
-        }
     }
 
     void instanciaPossivelPonto()
     // instacia possiveis pontos
     {
-        foreach(Vector3 vPf in medias)
+        int i = 0;
+        foreach(KeyValuePair<PontoTemporario, int> kvp in dictPontoTemp)
         {
-            GameObject verticesClicaveis = GameObject.Instantiate(novoPontoPrefab);
-            verticesClicaveis.transform.parent = objetoInicial.transform;
-            verticesClicaveis.name = "Sprit_" + medias.IndexOf(vPf);
-            verticesClicaveis.transform.position = vPf;
+            if(kvp.Value == 1)
+            {
+                GameObject verticesClicaveis = GameObject.Instantiate(novoPontoPrefab);
+                verticesClicaveis.transform.parent = objetoInicial.transform;
+                verticesClicaveis.name = "Sprit_" + i;
+                i++;
+                verticesClicaveis.transform.position = kvp.Key.posicao;
+                kvp.Key.go = verticesClicaveis;
+            }
         }
-        
-        
-        
-        
     }
 }
