@@ -128,10 +128,10 @@ public class AdicionaVerticesClicaveis : MonoBehaviour
         //     i += 3;
         // }
 
-        for(int ijk = 0; ijk < newTriangles.Length; ijk+=3)
-        {
-            print("v1: " +  newTriangles[ijk] + " v2: " +  newTriangles[ijk+1] + " v3: " +  newTriangles[ijk+2]);
-        }
+        // for(int ijk = 0; ijk < newTriangles.Length; ijk+=3)
+        // {
+        //     print("v1: " +  newTriangles[ijk] + " v2: " +  newTriangles[ijk+1] + " v3: " +  newTriangles[ijk+2]);
+        // }
 
         // Mesh mesh = new Mesh();
         mesh.Clear();
@@ -140,17 +140,17 @@ public class AdicionaVerticesClicaveis : MonoBehaviour
         mesh.triangles = new int[0];
         
         mesh.vertices = newVertices;
-        print(mesh.vertices.Length);
+        // print(mesh.vertices.Length);
         mesh.uv = newUV;
         mesh.triangles = newTriangles;
         
         // mesh.RecalculateNormals();
         mesh.normals = newNormals;
-        foreach(var n in mesh.normals)
-        {
-            print(n);
-        }
-        print(mesh.normals.Length);
+        // foreach(var n in mesh.normals)
+        // {
+        //     print(n);
+        // }
+        // print(mesh.normals.Length);
         // GetComponent<MeshFilter>().mesh = mesh;
         SendMessage("atualizaListaVertices");
     }
@@ -159,10 +159,10 @@ public class AdicionaVerticesClicaveis : MonoBehaviour
     //
     {
         Mesh ms = this.GetComponent<MeshFilter>().mesh;
-        print(ms.vertices.Length);
-        foreach(Vector3 v in ms.vertices){
-            print(v);
-        }
+        // print(ms.vertices.Length);
+        // foreach(Vector3 v in ms.vertices){
+        //     print(v);
+        // }
         // foreach(KeyValuePair<Vector3, PontosClicaveis> kvp in dictPontos)
         // {
         //     PontosClicaveis pc = kvp.Value;

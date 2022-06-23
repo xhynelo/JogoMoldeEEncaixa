@@ -18,9 +18,9 @@ public class ScriptAcerto : MonoBehaviour
         
     }
 
-    public bool CalculaColizores()
+    public bool CalculaColisores(out int quantidade)
     {
-        int quantidade = 0;
+        quantidade = 0;
         foreach(Rigidbody c in colisores)
         {
             int cColisao = c.GetComponent<ChegaColisaoAcerto>().colisoes;

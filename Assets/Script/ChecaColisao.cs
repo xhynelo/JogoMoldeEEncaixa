@@ -29,17 +29,18 @@ public class ChecaColisao : MonoBehaviour
     public void verificaColisoes()
     {
         int filhos = 0;
-        int colisoes = 0;
+        // int colisoes = 0;
         foreach(Transform child in objetoInicial.transform){
                 
             }
         filhos = objetoInicial.transform.childCount;
-        colisoes = erro.GetComponent<ChecaColisaoErro>().colisoes;
-        if(colisoes == filhos)
+        int quantidade;
+        bool FiguraCorreta = acerto.GetComponent<ScriptAcerto>().CalculaColisores(out quantidade);
+        if(FiguraCorreta)
         {
             print("todosColidiram");
         }else{
-            print("apenas " + colisoes + " colidiram");
+            print("apenas " + quantidade + " colidiram");
         }
     }
 }

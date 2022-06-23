@@ -62,6 +62,6 @@ public class ScrpitVerticesPrefab : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        print(collision.gameObject.name);
+        // print(collision.gameObject.name);
     }
 }

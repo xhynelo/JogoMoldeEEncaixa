@@ -20,7 +20,7 @@ public class ChegaColisaoAcerto : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         colisoes++;
-        print("CCE " + other.gameObject.name);
+        // print("CCE " + other.gameObject.name);
     }
 
     private void OnTriggerExit(Collider other)
