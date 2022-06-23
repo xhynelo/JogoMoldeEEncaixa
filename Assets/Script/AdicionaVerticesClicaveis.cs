@@ -92,7 +92,7 @@ public class AdicionaVerticesClicaveis : MonoBehaviour
     {
         Mesh mesh = GetComponent<MeshFilter>().mesh;
 
-
+        Vector3[] newNormals = new Vector3[dictPontos.Count];
         Vector3[] newVertices = new Vector3[dictPontos.Count];
         // print(dictPontos.Count);
         Vector2[] newUV = new Vector2[dictPontos.Count];
@@ -106,6 +106,7 @@ public class AdicionaVerticesClicaveis : MonoBehaviour
         {
             newVertices[i] = kvp.Value.pos;
             newUV[i] = new Vector2(0.0f, 0.0f);
+            newNormals[i] = new Vector3(0.0f, 0.0f, -1.0f);
             dictIndiceV[kvp.Value] = i;
             kvp.Value.indice = i;
             i++;
@@ -144,6 +145,12 @@ public class AdicionaVerticesClicaveis : MonoBehaviour
         mesh.triangles = newTriangles;
         
         // mesh.RecalculateNormals();
+        mesh.normals = newNormals;
+        foreach(var n in mesh.normals)
+        {
+            print(n);
+        }
+        print(mesh.normals.Length);
         // GetComponent<MeshFilter>().mesh = mesh;
         SendMessage("atualizaListaVertices");
     }

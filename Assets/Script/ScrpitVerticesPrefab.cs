@@ -29,11 +29,11 @@ public class ScrpitVerticesPrefab : MonoBehaviour
         {
             GameObject cube = prefab;
             var cubeRenderer = cube.GetComponent<Renderer>();
-            cubeRenderer.material.SetColor("_Color", Color.red);
+            cubeRenderer.material.SetColor("_BaseColor", Color.red);
         }else{
             GameObject cube = prefab;
             var cubeRenderer = cube.GetComponent<Renderer>();
-            cubeRenderer.material.SetColor("_Color", Color.white);
+            cubeRenderer.material.SetColor("_BaseColor", Color.white);
         }
     }
 
