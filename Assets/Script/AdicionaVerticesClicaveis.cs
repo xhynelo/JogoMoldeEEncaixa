@@ -6,9 +6,9 @@ public class AdicionaVerticesClicaveis : MonoBehaviour
 {
     public GameObject prefabVertice;
     public GameObject essaMalha;
-    Dictionary<Vector3, PontosClicaveis> dictPontos = new Dictionary<Vector3, PontosClicaveis>();
+    public Dictionary<Vector3, PontosClicaveis> dictPontos = new Dictionary<Vector3, PontosClicaveis>();
     List<Face> triangulos = new List<Face>();
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,22 +31,22 @@ public class AdicionaVerticesClicaveis : MonoBehaviour
             PontosClicaveis ponto;
             if(!dictPontos.TryGetValue(msV3[numeroVertice], out ponto))
             {
-                ponto = new PontosClicaveis();
-                ponto.pos = msV3[numeroVertice];
-                ponto.uv = ms.uv[numeroVertice];
+                ponto = new PontosClicaveis(msV3[numeroVertice]);
+                // ponto.pos = msV3[numeroVertice];
+                // ponto.uv = ms.uv[numeroVertice];
                 dictPontos[msV3[numeroVertice]] = ponto;
             }
-            ponto.vertices.Add(numeroVertice);
+            // ponto.vertices.Add(numeroVertice);
         }
     }
 
-    void adicionaAresta(Vector3 p, Vector3 pv)
-    //Conta quantidade aresta com dicionario
-    {
-        if(dictPontos[p].vizinhos.Contains(dictPontos[pv])) return;
-        dictPontos[p].vizinhos.Add(dictPontos[pv]);
-        dictPontos[pv].vizinhos.Add(dictPontos[p]);
-    }
+    // void adicionaAresta(Vector3 p, Vector3 pv)
+    // //Conta quantidade aresta com dicionario
+    // {
+    //     if(dictPontos[p].vizinhos.Contains(dictPontos[pv])) return;
+    //     dictPontos[p].vizinhos.Add(dictPontos[pv]);
+    //     dictPontos[pv].vizinhos.Add(dictPontos[p]);
+    // }
 
     void adicionaVizinhos()
     //
@@ -59,10 +59,10 @@ public class AdicionaVerticesClicaveis : MonoBehaviour
             triangulos.Add(new Face(
                 dictPontos[ms.vertices[msT[i]]],
                 dictPontos[ms.vertices[msT[i+1]]],
-                dictPontos[ms.vertices[msT[i+2]]], i));
-            adicionaAresta(ms.vertices[msT[i]], ms.vertices[msT[i+1]]);
-            adicionaAresta(ms.vertices[msT[i+1]], ms.vertices[msT[i+2]]);
-            adicionaAresta(ms.vertices[msT[i+2]], ms.vertices[msT[i]]);
+                dictPontos[ms.vertices[msT[i+2]]]));
+            // adicionaAresta(ms.vertices[msT[i]], ms.vertices[msT[i+1]]);
+            // adicionaAresta(ms.vertices[msT[i+1]], ms.vertices[msT[i+2]]);
+            // adicionaAresta(ms.vertices[msT[i+2]], ms.vertices[msT[i]]);
         }
     }
 
@@ -74,8 +74,8 @@ public class AdicionaVerticesClicaveis : MonoBehaviour
         foreach(KeyValuePair<Vector3, PontosClicaveis> kvp in dictPontos)
         {
             PontosClicaveis ponto = kvp.Value;
-            if(ponto.pos.z < 0)
-            {
+            // if(ponto.pos.z < 0)
+            // {
                 GameObject verticesClicaveis = GameObject.Instantiate(prefabVertice);
                 verticesClicaveis.transform.parent = gameObject.transform;
                 verticesClicaveis.name = "vertice_" + i;
@@ -84,25 +84,27 @@ public class AdicionaVerticesClicaveis : MonoBehaviour
                 verticesClicaveis.GetComponent<ScrpitVerticesPrefab>().numeroVertice = i;
                 verticesClicaveis.GetComponent<ScrpitVerticesPrefab>().ponto = ponto;
                 i++;
-            }
+            // }
         }
     }
 
     public void recriarMalha()
     {
         Mesh mesh = GetComponent<MeshFilter>().mesh;
-        
-        
+
+
         Vector3[] newVertices = new Vector3[dictPontos.Count];
+        // print(dictPontos.Count);
         Vector2[] newUV = new Vector2[dictPontos.Count];
         int[] newTriangles = new int[triangulos.Count * 3];
+        // print(triangulos.Count * 3);
         Dictionary<PontosClicaveis, int> dictIndiceV = new Dictionary<PontosClicaveis, int>();
 
 
         int i = 0;
         foreach(KeyValuePair<Vector3, PontosClicaveis> kvp in dictPontos)
         {
-            newVertices[i] = kvp.Key;
+            newVertices[i] = kvp.Value.pos;
             newUV[i] = new Vector2(0.0f, 0.0f);
             dictIndiceV[kvp.Value] = i;
             kvp.Value.indice = i;
@@ -117,14 +119,33 @@ public class AdicionaVerticesClicaveis : MonoBehaviour
             newTriangles[i+2] = dictIndiceV[f.vertices[2]];
             i += 3;
         }
+        // foreach(Face f in triangulos)
+        // {
+        //     newTriangles[i+2] = dictIndiceV[f.vertices[0]];
+        //     newTriangles[i+1] = dictIndiceV[f.vertices[1]];
+        //     newTriangles[i] = dictIndiceV[f.vertices[2]];
+        //     i += 3;
+        // }
 
+        for(int ijk = 0; ijk < newTriangles.Length; ijk+=3)
+        {
+            print("v1: " +  newTriangles[ijk] + " v2: " +  newTriangles[ijk+1] + " v3: " +  newTriangles[ijk+2]);
+        }
+
+        // Mesh mesh = new Mesh();
         mesh.Clear();
 
        // Do some calculations...
+        mesh.triangles = new int[0];
+        
         mesh.vertices = newVertices;
+        print(mesh.vertices.Length);
         mesh.uv = newUV;
         mesh.triangles = newTriangles;
+        
         mesh.RecalculateNormals();
+        // GetComponent<MeshFilter>().mesh = mesh;
+        SendMessage("atualizaListaVertices");
     }
 
     void printaPosPontos()
@@ -144,24 +165,106 @@ public class AdicionaVerticesClicaveis : MonoBehaviour
         // }
     }
 
+    void insataciaNovoPontoClicavel(PontoTemporario pt)
+    {
+        GameObject verticesClicaveis = GameObject.Instantiate(prefabVertice);
+        verticesClicaveis.transform.parent = gameObject.transform;
+        verticesClicaveis.name = "vertice_" + dictPontos.Count;
+        verticesClicaveis.transform.position = pt.posicao;
+        verticesClicaveis.GetComponent<ScrpitVerticesPrefab>().malhaPrincipal = essaMalha;
+        // print(pontos.Count);
+        // verticesClicaveis.GetComponent<ScrpitVerticesPrefab>().numeroVertice = objetoInicial.GetComponent<MeshFilter>().mesh.vertices.Length;
+
+
+        verticesClicaveis.GetComponent<ScrpitVerticesPrefab>().ponto = criarPontoClicavel(pt);
+        // i++;
+    }
+
+    public PontosClicaveis criarPontoClicavel(PontoTemporario pt)
+    {
+        PontosClicaveis ponto = new PontosClicaveis(pt.posicao);
+        List<Face> removidas = new List<Face>();
+        List<List<PontosClicaveis>> novasFaces = new List<List<PontosClicaveis>>();
+        foreach(Face f in pt.v1.faces)
+        {
+            PontosClicaveis v3;
+            PontosClicaveis v2;
+            PontosClicaveis v1;
+            if(f.contemAresta(pt.v1, pt.v2, out v1, out v2, out v3))
+            {
+                removidas.Add(f);
+                novasFaces.Add(new List<PontosClicaveis>(){v3, v1, ponto});
+                novasFaces.Add(new List<PontosClicaveis>(){v3, ponto, v2});
+            }
+        }
+        foreach(Face f in removidas)
+        {
+            triangulos.Remove(f);
+            foreach(PontosClicaveis pc in f.vertices)
+            {
+                pc.faces.Remove(f);
+            }
+        }
+        foreach(List<PontosClicaveis> lPC in novasFaces)
+        {
+            triangulos.Add(new Face(lPC[0],lPC[1],lPC[2]));
+        }
+        dictPontos[pt.posicao] = ponto;
+        recriarMalha();
+        // Cria ponto
+        // Percorre face
+        //   apaga face
+        //   cria 2 faces
+        //     v1 v2 ponto
+        //     v2 ponto v3
+        return ponto;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
 
 public class Face
 {
-    public int indice;
+    // public int indice;
     public PontosClicaveis[] vertices;
 
-    public Face(PontosClicaveis v1, PontosClicaveis v2, PontosClicaveis v3, int i)
+    public Face(PontosClicaveis v1, PontosClicaveis v2, PontosClicaveis v3)
     {
         vertices = new PontosClicaveis[3]{v1, v2, v3};
-        indice = i;
+        // indice = i;
         v1.faces.Add(this);
         v2.faces.Add(this);
         v3.faces.Add(this);
     }
+
+    public bool contemAresta(PontosClicaveis v1, PontosClicaveis v2, out PontosClicaveis ov1, out PontosClicaveis ov2, out PontosClicaveis ov3)
+    {
+        int quantidades = 0;
+        ov1 = null;
+        ov2 = null;
+        ov3 = null;
+        foreach(PontosClicaveis pc in vertices)
+        {
+            if(pc.pos == v1.pos || pc.pos == v2.pos)
+            {
+                quantidades++;
+                if(ov1 == null) ov1 = pc;
+                else ov2 = pc;
+            } else {
+                ov3 = pc;
+            }
+        }
+        if(ov1 == vertices[0] && ov2 == vertices[2])
+        {
+            ov1 = vertices[2];
+            ov2 = vertices[0];
+        }  
+        return quantidades == 2;
+    }
+
+    
 }

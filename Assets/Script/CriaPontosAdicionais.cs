@@ -6,6 +6,8 @@ public class CriaPontosAdicionais : MonoBehaviour
 {
     public GameObject objetoInicial;
     public GameObject novoPontoPrefab;
+    public GameObject prefabVertice;
+    public Canvas cv;
     // List<PontosClicaveis> pontos = new List<PontosClicaveis>();
     List<Vector3> medias = new List<Vector3>();
     Dictionary<PontoTemporario, int> dictPontoTemp = new Dictionary<PontoTemporario, int>();
@@ -33,6 +35,7 @@ public class CriaPontosAdicionais : MonoBehaviour
 
     void pegaTodasBolinhas()
     {
+        pontos.Clear();
         int i = 0;
         foreach(Transform child in objetoInicial.transform)
         {
@@ -57,6 +60,7 @@ public class CriaPontosAdicionais : MonoBehaviour
     void TiraMediaPontos()
     // adciona medias
     {
+        dictPontoTemp.Clear();
         Mesh ms = objetoInicial.GetComponent<MeshFilter>().mesh;
         int[] msT = ms.triangles;
         for(int i = 0; i < msT.Length; i+=3)
@@ -83,8 +87,22 @@ public class CriaPontosAdicionais : MonoBehaviour
                 verticesClicaveis.name = "Sprit_" + i;
                 i++;
                 verticesClicaveis.transform.position = kvp.Key.posicao;
+                verticesClicaveis.GetComponent<ScriptPontoTemporario>().canvas = cv;
+                verticesClicaveis.GetComponent<ScriptPontoTemporario>().pt = kvp.Key;
                 kvp.Key.go = verticesClicaveis;
             }
         }
     }
+
+    void deletaPontosTemporariosNaoEscolhidos(PontoTemporario pt)
+    {
+        foreach(KeyValuePair<PontoTemporario, int> kvp in dictPontoTemp)
+        {
+                Destroy(kvp.Key.go);
+        }
+        objetoInicial.SendMessage("insataciaNovoPontoClicavel", pt);
+        print("EntreiAqui " + pt.posicao);
+        print(pontos.Count);
+    }
+
 }

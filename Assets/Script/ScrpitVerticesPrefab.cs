@@ -8,7 +8,6 @@ public class ScrpitVerticesPrefab : MonoBehaviour
     public GameObject malhaPrincipal;
     public GameObject prefab;
     public int numeroVertice;
-    public List<int> vizinhos; 
     public bool selecionado;
     public PontosClicaveis ponto;
     // Start is called before the first frame update
@@ -59,5 +58,10 @@ public class ScrpitVerticesPrefab : MonoBehaviour
             ponto.posAnterior = posAnterior;
             transform.parent.SendMessage("atualizaVertice", ponto);
         } 
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        print(collision.gameObject.name);
     }
 }

@@ -17,6 +17,19 @@ public class PontoTemporario
         posicao = (v1.pos + v2.pos)/2;
     }
 
+    public PontosClicaveis criarPontoClicavel()
+    {
+        PontosClicaveis ponto = new PontosClicaveis(posicao);
+        // Cria ponto
+        // Percorre face
+        //   apaga face
+        //   cria 2 faces
+        //     v1 v2 ponto
+        //     v2 ponto v3
+        return ponto;
+    }
+
+
     public override int GetHashCode()
     {
         return posicao.GetHashCode();
@@ -27,15 +40,5 @@ public class PontoTemporario
         if(obj == null || !(obj is PontoTemporario)) return false;
         return posicao.Equals(((PontoTemporario)obj).posicao);
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

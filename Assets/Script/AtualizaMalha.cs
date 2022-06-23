@@ -54,4 +54,9 @@ public class AtualizaMalha : MonoBehaviour
         GetComponent<MeshFilter>().mesh.vertices = listaVertices;
         listaVertices = GetComponent<MeshFilter>().mesh.vertices;
     }
+
+    public void atualizaListaVertices()
+    {
+        listaVertices = GetComponent<MeshFilter>().mesh.vertices;
+    }
 }
