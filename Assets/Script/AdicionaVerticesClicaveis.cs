@@ -143,7 +143,7 @@ public class AdicionaVerticesClicaveis : MonoBehaviour
         mesh.uv = newUV;
         mesh.triangles = newTriangles;
         
-        mesh.RecalculateNormals();
+        // mesh.RecalculateNormals();
         // GetComponent<MeshFilter>().mesh = mesh;
         SendMessage("atualizaListaVertices");
     }
