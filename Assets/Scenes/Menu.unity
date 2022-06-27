@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 1596204}
   - component: {fileID: 1596203}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Sair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,7 +205,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1596204}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 488775828}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1596204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,7 +418,7 @@ GameObject:
   - component: {fileID: 243440158}
   - component: {fileID: 243440157}
   m_Layer: 5
-  m_Name: Button
+  m_Name: EscolherMapa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -475,7 +487,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 243440158}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 488775833}
+        m_TargetAssemblyTypeName: MudarCenaEscolherMapa, Assembly-CSharp
+        m_MethodName: mudaCena
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &243440158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,7 +551,7 @@ GameObject:
   - component: {fileID: 378000872}
   - component: {fileID: 378000871}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Credito
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -596,7 +620,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 378000872}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 488775834}
+        m_TargetAssemblyTypeName: MudarCenaCreditos, Assembly-CSharp
+        m_MethodName: mudaCena
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &378000872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -746,6 +782,10 @@ GameObject:
   - component: {fileID: 488775829}
   - component: {fileID: 488775831}
   - component: {fileID: 488775830}
+  - component: {fileID: 488775835}
+  - component: {fileID: 488775834}
+  - component: {fileID: 488775833}
+  - component: {fileID: 488775832}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -814,6 +854,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 488775828}
   m_CullTransparentMesh: 1
+--- !u!114 &488775832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488775828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74a52a187733c434a81e03d84d72d3e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &488775833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488775828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 815b6150107e8734c83ca4616e594a01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &488775834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488775828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 289951b381d4df44f9aabf3411e478fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &488775835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488775828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aa10494c41ea834586f0d7102a46518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &542118745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,7 +1231,7 @@ GameObject:
   - component: {fileID: 2086727750}
   - component: {fileID: 2086727749}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Controle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1212,7 +1300,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2086727750}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 488775835}
+        m_TargetAssemblyTypeName: MudarCenaControle, Assembly-CSharp
+        m_MethodName: mudaCena
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2086727750
 MonoBehaviour:
   m_ObjectHideFlags: 0

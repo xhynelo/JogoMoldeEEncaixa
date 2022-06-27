@@ -8,6 +8,7 @@ public class CriaPontosAdicionais : MonoBehaviour
     public GameObject novoPontoPrefab;
     public GameObject prefabVertice;
     public Canvas cv;
+    public GameObject cameraPrincipal;
     // List<PontosClicaveis> pontos = new List<PontosClicaveis>();
     List<Vector3> medias = new List<Vector3>();
     Dictionary<PontoTemporario, int> dictPontoTemp = new Dictionary<PontoTemporario, int>();
@@ -24,6 +25,12 @@ public class CriaPontosAdicionais : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ativaCriaVertices()
+    {
+        cameraPrincipal.GetComponent<MoveVertices>().podeMover = false;
+        cameraPrincipal.GetComponent<SelecionaVertices>().podeSelecionar = false;
     }
 
     public void CriaPossiveisPontos()
@@ -103,6 +110,16 @@ public class CriaPontosAdicionais : MonoBehaviour
         objetoInicial.SendMessage("insataciaNovoPontoClicavel", pt);
         print("EntreiAqui " + pt.posicao);
         print(pontos.Count);
+    }
+
+    public void deletaPontosTemporarios()
+    {
+        print("vou deletar");
+        foreach(KeyValuePair<PontoTemporario, int> kvp in dictPontoTemp)
+        {
+            print(kvp.Value);
+            Destroy(kvp.Key.go);
+        }
     }
 
 }

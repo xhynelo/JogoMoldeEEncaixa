@@ -10,6 +10,7 @@ public class ScrpitVerticesPrefab : MonoBehaviour
     public int numeroVertice;
     public bool selecionado;
     public PontosClicaveis ponto;
+    public bool ehVertices = true;
     // Start is called before the first frame update
     void Start()
     {

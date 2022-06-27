@@ -8,4 +8,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 85631a5501aa06d4e8b27f673a178869
+  - enabled: 1
+    path: Assets/Scenes/EscolherMapa.unity
+    guid: 9b0d69fc31393ab4cb5cf6b485112501
+  - enabled: 1
+    path: Assets/Scenes/Creditos.unity
+    guid: b3dd84a648392634bba7d463868bfb63
+  - enabled: 1
+    path: Assets/Scenes/Controles.unity
+    guid: 1db95f2fae101fc4da78ea08885f5626
+  - enabled: 1
+    path: Assets/Scenes/Jogo.unity
+    guid: 8c6e4ae14d27af045a5c05d08a4aac7b
   m_configObjects: {}

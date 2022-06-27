@@ -9,6 +9,8 @@ public class ScriptPontoTemporario : MonoBehaviour
 
     public PontoTemporario pt;
 
+    public bool ehVertices = false;
+
     void OnMouseDown()
     {
         print("oie");
@@ -28,6 +30,11 @@ public class ScriptPontoTemporario : MonoBehaviour
     }
 
     public void moveVertice()
+    {
+        
+    }
+    
+    void ativaVertice()
     {
         
     }

@@ -8,6 +8,7 @@ public class MoveVertices : MonoBehaviour
     public Vector3 posMouseAtual;
     public Vector3 difPosMouse;
     public GameObject objetoInicial;
+    public bool podeMover = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,14 @@ public class MoveVertices : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        if(podeMover)
+        {
+            move();
+        }
+    }
+
+    void move()
     {
         if(Input.GetButtonDown("Move"))
         {
