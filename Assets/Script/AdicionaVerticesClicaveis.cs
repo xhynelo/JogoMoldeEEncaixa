@@ -8,11 +8,12 @@ public class AdicionaVerticesClicaveis : MonoBehaviour
     public GameObject essaMalha;
     public Dictionary<Vector3, PontosClicaveis> dictPontos = new Dictionary<Vector3, PontosClicaveis>();
     List<Face> triangulos = new List<Face>();
-
+    public GameObject infoFases;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         CriaClassPontos();
         adicionaVizinhos();
         recriarMalha();
@@ -230,7 +231,7 @@ public class AdicionaVerticesClicaveis : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // infoFases = GameObject.Find("infoFases");
     }
 }
 

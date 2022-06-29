@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MudaCenaJogo : MonoBehaviour
 {
+    public GameObject infofases;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +32,7 @@ public class MudaCenaJogo : MonoBehaviour
         else{
             print(SceneManager.GetActiveScene().buildIndex);
         }
-        
+        SceneManager.MoveGameObjectToScene(infofases, SceneManager.GetSceneByName("Jogo"));
         SceneManager.LoadScene("Menu");
         
     }
