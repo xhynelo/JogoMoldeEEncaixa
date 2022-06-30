@@ -9,13 +9,15 @@ public class AdicionaVerticesClicaveis : MonoBehaviour
     public Dictionary<Vector3, PontosClicaveis> dictPontos = new Dictionary<Vector3, PontosClicaveis>();
     List<Face> triangulos = new List<Face>();
     public GameObject infoFases;
+    
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        
-        CriaClassPontos();
-        adicionaVizinhos();
+        criaMalha();   
+        // CriaClassPontos();
+        // adicionaVizinhos();
         recriarMalha();
         // printaPosPontos();
         instanciaPontosClicaveis();
@@ -67,6 +69,38 @@ public class AdicionaVerticesClicaveis : MonoBehaviour
         }
     }
 
+    void criaMalha()
+    {
+        Jogo jogo = InfoFases.jogos[InfoFases.jogoAtual];
+        PontosClicaveis ponto0 = adicionaNoPontos(Vector3.zero);
+        int qtdLados = jogo.lados;
+        float rotacao = jogo.rotacao;
+        float deltaAngulo = 2*Mathf.PI / qtdLados;
+        float raio = jogo.raio;
+        PontosClicaveis ponotAnterior = adicionaNoPontos(new Vector3(raio*Mathf.Cos(rotacao), raio*Mathf.Sin(rotacao), 0));
+        PontosClicaveis ponto1 = ponotAnterior;
+        for(int i = 1; i < qtdLados; i++)
+        {
+            float angulo = deltaAngulo * i + rotacao;
+            PontosClicaveis ponto = adicionaNoPontos(new Vector3(raio*Mathf.Cos(angulo), raio*Mathf.Sin(angulo), 0));
+            triangulos.Add(new Face(
+                ponto0,
+                ponotAnterior,
+                ponto));
+            ponotAnterior = ponto;
+        }
+        triangulos.Add(new Face(
+            ponto0,
+            ponotAnterior,
+            ponto1));
+    }
+
+    PontosClicaveis adicionaNoPontos(Vector3 posicao)
+    {
+        PontosClicaveis ponto = new PontosClicaveis(posicao);
+        dictPontos[posicao] = ponto;
+        return ponto;
+    }
 
     void instanciaPontosClicaveis()
     //
@@ -75,8 +109,8 @@ public class AdicionaVerticesClicaveis : MonoBehaviour
         foreach(KeyValuePair<Vector3, PontosClicaveis> kvp in dictPontos)
         {
             PontosClicaveis ponto = kvp.Value;
-            // if(ponto.pos.z < 0)
-            // {
+            if(ponto.pos != Vector3.zero)
+            {
                 GameObject verticesClicaveis = GameObject.Instantiate(prefabVertice);
                 verticesClicaveis.transform.parent = gameObject.transform;
                 verticesClicaveis.name = "vertice_" + i;
@@ -85,7 +119,7 @@ public class AdicionaVerticesClicaveis : MonoBehaviour
                 verticesClicaveis.GetComponent<ScrpitVerticesPrefab>().numeroVertice = i;
                 verticesClicaveis.GetComponent<ScrpitVerticesPrefab>().ponto = ponto;
                 i++;
-            // }
+            }
         }
     }
 

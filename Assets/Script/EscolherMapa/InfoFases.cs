@@ -7,8 +7,8 @@ public class InfoFases
     public static int jogoAtual = 0;
 
     public static List<Jogo> jogos = new List<Jogo>{
-        new Jogo(desenho1(), 0),
-        new Jogo(desenho2(), 0)
+        new Jogo(desenho1(), 4, 45),
+        new Jogo(desenho2(), 3, 330)
     };
     static List<Vector3> desenho1()
     {
@@ -34,12 +34,34 @@ public class InfoFases
 public class Jogo
 {
     public List<Vector3> desenho;
-    public int modelo;
+    public int lados;
 
-    public Jogo(List<Vector3> desenho, int modelo)
+    public float rotacao;
+    public float raio;
+    public int estrela1;
+    public int estrela2;
+    public int estrela3;
+
+    public Jogo(List<Vector3> desenho, int lados, float rotacao, float raio = 1, int estrela1 = 6, int estrela2 = 4, int estrela3 = 2)
     {
         this.desenho = desenho;
-        this.modelo = modelo;
+        this.lados = lados;
+        this.rotacao = rotacao;
+        this.raio = raio;
+        this.estrela1 = estrela1;
+        this.estrela2 = estrela2;
+        this.estrela3 = estrela3;
+    }
+
+    public Jogo(List<Vector3> desenho, int lados, int angulo, float raio = 1, int estrela1 = 6, int estrela2 = 4, int estrela3 = 2)
+    {
+        this.desenho = desenho;
+        this.lados = lados;
+        this.rotacao = Mathf.PI * angulo/180;
+        this.raio = raio;
+        this.estrela1 = estrela1;
+        this.estrela2 = estrela2;
+        this.estrela3 = estrela3;
     }
 
 

@@ -72,12 +72,12 @@ public class CriaPontosAdicionais : MonoBehaviour
         int[] msT = ms.triangles;
         for(int i = 0; i < msT.Length; i+=3)
         {
-            if(!pontos.ContainsKey(ms.vertices[msT[i]])) continue;
-            if(!pontos.ContainsKey(ms.vertices[msT[i+1]])) continue;
-            if(!pontos.ContainsKey(ms.vertices[msT[i+2]])) continue;
-            adicionaAresta(ms.vertices[msT[i]], ms.vertices[msT[i+1]]);
-            adicionaAresta(ms.vertices[msT[i+1]], ms.vertices[msT[i+2]]);
-            adicionaAresta(ms.vertices[msT[i+2]], ms.vertices[msT[i]]);
+            if(pontos.ContainsKey(ms.vertices[msT[i]]) && pontos.ContainsKey(ms.vertices[msT[i+1]])) adicionaAresta(ms.vertices[msT[i]], ms.vertices[msT[i+1]]);
+            if(pontos.ContainsKey(ms.vertices[msT[i+1]]) && pontos.ContainsKey(ms.vertices[msT[i+2]])) adicionaAresta(ms.vertices[msT[i+1]], ms.vertices[msT[i+2]]);;
+            if(pontos.ContainsKey(ms.vertices[msT[i+2]]) && pontos.ContainsKey(ms.vertices[msT[i]])) adicionaAresta(ms.vertices[msT[i+2]], ms.vertices[msT[i]]);;
+            // adicionaAresta(ms.vertices[msT[i]], ms.vertices[msT[i+1]]);
+            // adicionaAresta(ms.vertices[msT[i+1]], ms.vertices[msT[i+2]]);
+            // adicionaAresta(ms.vertices[msT[i+2]], ms.vertices[msT[i]]);
         }
     }
 
