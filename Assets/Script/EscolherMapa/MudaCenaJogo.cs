@@ -20,6 +20,13 @@ public class MudaCenaJogo : MonoBehaviour
 
     public void mudaCenaJogo1()
     {
+        InfoFases.jogoAtual = 0;
+        SceneManager.LoadScene("Jogo");
+    }
+
+    public void mudaCenaJogo2()
+    {
+        InfoFases.jogoAtual = 1;
         SceneManager.LoadScene("Jogo");
     }
 

@@ -30,11 +30,7 @@ public class CriaImagem : MonoBehaviour
 
     void adicionaPonto()
     {
-        pontos.Add(new Vector3(-3.15f, -1.11f, 0.0f));
-        pontos.Add(new Vector3(-3.15f, 0.61f, 0.0f));
-        pontos.Add(new Vector3(0.0f, 2.01f, 0.0f));
-        pontos.Add(new Vector3(3.15f, 0.61f, 0.0f));
-        pontos.Add(new Vector3(3.15f, -1.11f, 0.0f));
+        pontos = InfoFases.jogos[InfoFases.jogoAtual].desenho;
         LR.positionCount = pontos.Count;
     }
 
