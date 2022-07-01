@@ -39,7 +39,7 @@ public class MudaCenaJogo : MonoBehaviour
         else{
             print(SceneManager.GetActiveScene().buildIndex);
         }
-        SceneManager.MoveGameObjectToScene(infofases, SceneManager.GetSceneByName("Jogo"));
+        // SceneManager.MoveGameObjectToScene(infofases, SceneManager.GetSceneByName("Jogo"));
         SceneManager.LoadScene("Menu");
         
     }
