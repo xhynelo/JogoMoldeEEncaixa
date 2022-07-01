@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CriaPontosAdicionais : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class CriaPontosAdicionais : MonoBehaviour
     public GameObject prefabVertice;
     public Canvas cv;
     public GameObject cameraPrincipal;
+    public Button botaoAdiciona;
     // List<PontosClicaveis> pontos = new List<PontosClicaveis>();
     List<Vector3> medias = new List<Vector3>();
     Dictionary<PontoTemporario, int> dictPontoTemp = new Dictionary<PontoTemporario, int>();
@@ -108,16 +110,17 @@ public class CriaPontosAdicionais : MonoBehaviour
                 Destroy(kvp.Key.go);
         }
         objetoInicial.SendMessage("insataciaNovoPontoClicavel", pt);
-        print("EntreiAqui " + pt.posicao);
-        print(pontos.Count);
+        botaoAdiciona.interactable = true;
+        // print("EntreiAqui " + pt.posicao);
+        // print(pontos.Count);
     }
 
     public void deletaPontosTemporarios()
     {
-        print("vou deletar");
+        // print("vou deletar");
         foreach(KeyValuePair<PontoTemporario, int> kvp in dictPontoTemp)
         {
-            print(kvp.Value);
+            // print(kvp.Value);
             Destroy(kvp.Key.go);
         }
     }

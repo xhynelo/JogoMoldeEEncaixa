@@ -8,6 +8,7 @@ public class ContaAberturas : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
        Camera.main.GetComponent<Pontuacao>().aberturas++;
+    //    Camera.main.GetComponent<Pontuacao>().calculaPlacar();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

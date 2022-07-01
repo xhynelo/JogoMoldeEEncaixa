@@ -20,9 +20,14 @@ public class BotaoSelecionaVertice : MonoBehaviour
 
     public void ativaSelecionaVertice()
     {
-        print("atum");
+        // print("atum");
         cameraPrincipal.GetComponent<MoveVertices>().podeMover = false;
         cameraPrincipal.GetComponent<SelecionaVertices>().podeSelecionar = true;
+        canvas.GetComponent<CriaPontosAdicionais>().deletaPontosTemporarios();
+    }
+
+    public void botaoCheca()
+    {
         canvas.GetComponent<CriaPontosAdicionais>().deletaPontosTemporarios();
     }
 }

@@ -26,7 +26,7 @@ public class ScriptAcerto : MonoBehaviour
             int cColisao = c.GetComponent<ChegaColisaoAcerto>().colisoes;
             if(cColisao >= 1)
             {
-                print(c.name);
+                // print(c.name);
                 quantidade++;
             }
         }

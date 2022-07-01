@@ -141,7 +141,7 @@ public class AdicionaVerticesClicaveis : MonoBehaviour
         {
             newVertices[i] = kvp.Value.pos;
             newUV[i] = new Vector2(0.0f, 0.0f);
-            newNormals[i] = new Vector3(0.0f, 0.0f, -1.0f);
+            newNormals[i] = new Vector3(0.0f, 0.0f, 1.0f);
             dictIndiceV[kvp.Value] = i;
             kvp.Value.indice = i;
             i++;
