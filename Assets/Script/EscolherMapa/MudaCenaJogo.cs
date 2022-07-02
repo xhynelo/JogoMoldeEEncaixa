@@ -38,13 +38,13 @@ public class MudaCenaJogo : MonoBehaviour
 
     public void voltaCena()
     {
-        if(SceneManager.GetActiveScene().Equals(SceneManager.GetSceneByBuildIndex(2)))
-        {
-            print("TRUE");
-        }
-        else{
-            print(SceneManager.GetActiveScene().buildIndex);
-        }
+        // if(SceneManager.GetActiveScene().Equals(SceneManager.GetSceneByBuildIndex(2)))
+        // {
+        //     print("TRUE");
+        // }
+        // else{
+        //     print(SceneManager.GetActiveScene().buildIndex);
+        // }
         // SceneManager.MoveGameObjectToScene(infofases, SceneManager.GetSceneByName("Jogo"));
         SceneManager.LoadScene("Menu");
         

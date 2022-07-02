@@ -14,7 +14,7 @@ public class ScriptPontoTemporario : MonoBehaviour
 
     void OnMouseDown()
     {
-        print("oie");
+        // print("oie");
         qtdPontos.GetComponent<ContadorPontosAdicionais>().decrementaQuantidade();
         canvas.SendMessage("deletaPontosTemporariosNaoEscolhidos", pt);
     }

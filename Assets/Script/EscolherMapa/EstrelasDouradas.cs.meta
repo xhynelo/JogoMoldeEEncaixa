@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 77eab038ee8d2cf449366afde754e8a0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - estrelaDourada: {fileID: 21300000, guid: 2979ca6f70e0e2e499ba5286a9d4e2c6, type: 3}
+  - estrelaVazia: {fileID: 21300000, guid: faab7bba5647fd44c9b95c65e9c45513, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

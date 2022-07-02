@@ -34,10 +34,7 @@ public class ChecaColisao : MonoBehaviour
     public void verificaColisoes()
     {
         int filhos = 0;
-        // int colisoes = 0;
-        // foreach(Transform child in objetoInicial.transform){
-                
-        //     }
+
         filhos = objetoInicial.transform.childCount;
         int quantidade;
         bool FiguraCorreta = acerto.GetComponent<ScriptAcerto>().CalculaColisores(out quantidade);

@@ -78,6 +78,8 @@ public class Pontuacao : MonoBehaviour
             Estrela1.sprite = estrela;
             Estrela2.sprite = estrela;
             Estrela3.sprite = estrela;
+
+            
         }else if(estrelas == 2){
             Estrela1.sprite = estrela;
             Estrela2.sprite = estrela;
@@ -91,6 +93,11 @@ public class Pontuacao : MonoBehaviour
             Estrela2.sprite = naoEstrela;
             Estrela3.sprite = naoEstrela;
         }
+        if(InfoFases.salvos.intArray[InfoFases.jogoAtual] < estrelas)
+        {
+            InfoFases.salvos.intArray[InfoFases.jogoAtual] = estrelas;
+        }
+        SaveLoad.SaveGame();
     }
 
     // 2 4 6

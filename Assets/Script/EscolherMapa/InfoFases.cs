@@ -2,19 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+
 public class InfoFases
 {
     public static int jogoAtual = 0;
 
+    public static SaveData salvos = new SaveData();
+
     public static List<Jogo> jogos = new List<Jogo>{
         new Jogo(desenho1(), 4, 45, 3, 6, 8),
-        new Jogo(estrela(), 3, 330),
+        new Jogo(estrela(), 3, 330, 4, 7, 10),
         new Jogo(coqueiro(), 6, 0, 5, 10, 15),
         new Jogo(carro(),4, 45, 4, 7, 10),
         new Jogo(quebraCabeca(), 6, 0, 6, 10, 13)
     };
 
     static List<Vector3> desenho1()
+    // desenha uma casa
     {
         List<Vector3> pontos = new List<Vector3>();
         pontos.Add(new Vector3(-3.15f, -1.11f, 0.0f));
@@ -26,6 +33,7 @@ public class InfoFases
     }
 
     static List<Vector3> desenho2()
+    // desenha um retangulo
     {
         List<Vector3> pontos = new List<Vector3>();
         pontos.Add(new Vector3(-6f, -3.8f, 0.0f));
@@ -36,6 +44,7 @@ public class InfoFases
     }
 
     static List<Vector3> coqueiro()
+    // desenha um coqueiro
     {
         float deslocamento = 0.8f;
         List<Vector3> pontos = new List<Vector3>();
@@ -65,6 +74,7 @@ public class InfoFases
     }
 
     static List<Vector3> estrela()
+    // desenha uma estrela
     {
         float deslocamento = 0;
         List<Vector3> pontos = new List<Vector3>();
@@ -82,6 +92,7 @@ public class InfoFases
     }
 
     static List<Vector3> carro()
+    // desenha um carro
     {
         float deslocamento = 0;
         List<Vector3> pontos = new List<Vector3>();
@@ -105,6 +116,7 @@ public class InfoFases
     }
 
     static List<Vector3> quebraCabeca()
+    // desenha uma peca de quebra cabeca
     {
         float deslocamento = 1;
         List<Vector3> pontos = new List<Vector3>();
@@ -173,4 +185,58 @@ public class Jogo
     }
 
 
+}
+
+[Serializable]
+public class SaveData
+{
+    public int[] intArray = new int[5]{0,0,0,0,0};
+}
+
+public class SaveLoad
+{
+    public static void SaveGame()
+    {
+        BinaryFormatter bf = new BinaryFormatter(); 
+        FileStream file = File.Create(Application.persistentDataPath 
+                    + "/MySaveData.dat"); 
+
+        bf.Serialize(file, InfoFases.salvos);
+        file.Close();
+        Debug.Log("Game data saved!");
+    }
+
+    public static void LoadGame()
+    {
+        if (File.Exists(Application.persistentDataPath 
+                    + "/MySaveData.dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = 
+                    File.Open(Application.persistentDataPath 
+                    + "/MySaveData.dat", FileMode.Open);
+            InfoFases.salvos = (SaveData)bf.Deserialize(file);
+            file.Close();
+
+            Debug.Log("Game data loaded!");
+        }
+        else
+            Debug.LogError("There is no save data!");
+    }
+
+    public static void ResetData()
+    {
+        if (File.Exists(Application.persistentDataPath 
+                    + "/MySaveData.dat"))
+        {
+            File.Delete(Application.persistentDataPath 
+                            + "/MySaveData.dat");
+            // intToSave = 0;
+            InfoFases.salvos = new SaveData();
+            // boolToSave = false;
+            Debug.Log("Data reset complete!");
+        }
+        else
+            Debug.LogError("No save data to delete.");
+    }
 }
