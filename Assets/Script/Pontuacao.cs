@@ -14,6 +14,11 @@ public class Pontuacao : MonoBehaviour
     public Color cor2; //F1E42D
     public Color cor1;
     public Color cor0; //D93636
+    public Sprite estrela;
+    public Sprite naoEstrela;
+    public Image Estrela1;
+    public Image Estrela2;
+    public Image Estrela3;
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +68,28 @@ public class Pontuacao : MonoBehaviour
             placar.text = aberturas.ToString() + " / ∞ ";
             placar.color = cor0;
             estrelas = 0;
+        }
+    }
+
+    public void mostraEstrelas()
+    {
+        if(estrelas == 3)
+        {
+            Estrela1.sprite = estrela;
+            Estrela2.sprite = estrela;
+            Estrela3.sprite = estrela;
+        }else if(estrelas == 2){
+            Estrela1.sprite = estrela;
+            Estrela2.sprite = estrela;
+            Estrela3.sprite = naoEstrela;
+        }else if(estrelas == 1){
+            Estrela1.sprite = estrela;
+            Estrela2.sprite = naoEstrela;
+            Estrela3.sprite = naoEstrela;
+        }else{
+            Estrela1.sprite = naoEstrela;
+            Estrela2.sprite = naoEstrela;
+            Estrela3.sprite = naoEstrela;
         }
     }
 

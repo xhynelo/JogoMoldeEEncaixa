@@ -29,5 +29,6 @@ public class BotaoSelecionaVertice : MonoBehaviour
     public void botaoCheca()
     {
         canvas.GetComponent<CriaPontosAdicionais>().deletaPontosTemporarios();
+        cameraPrincipal.GetComponent<Pontuacao>().mostraEstrelas();
     }
 }

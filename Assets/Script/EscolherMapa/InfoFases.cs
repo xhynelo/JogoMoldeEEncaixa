@@ -35,9 +35,9 @@ public class Jogo
 {
     public List<Vector3> desenho;
     public int lados;
-
     public float rotacao;
     public float raio;
+    public int pontosAdionaveis;
     public int estrela1;
     public int estrela2;
     public int estrela3;
@@ -51,6 +51,7 @@ public class Jogo
         this.estrela1 = estrela1;
         this.estrela2 = estrela2;
         this.estrela3 = estrela3;
+        pontosAdionaveis = desenho.Count - lados; 
     }
 
     public Jogo(List<Vector3> desenho, int lados, int angulo, float raio = 1, int estrela1 = 6, int estrela2 = 4, int estrela3 = 2)
@@ -62,6 +63,7 @@ public class Jogo
         this.estrela1 = estrela1;
         this.estrela2 = estrela2;
         this.estrela3 = estrela3;
+        pontosAdionaveis = desenho.Count - lados;
     }
 
 

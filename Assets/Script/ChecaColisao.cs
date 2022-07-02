@@ -35,9 +35,9 @@ public class ChecaColisao : MonoBehaviour
     {
         int filhos = 0;
         // int colisoes = 0;
-        foreach(Transform child in objetoInicial.transform){
+        // foreach(Transform child in objetoInicial.transform){
                 
-            }
+        //     }
         filhos = objetoInicial.transform.childCount;
         int quantidade;
         bool FiguraCorreta = acerto.GetComponent<ScriptAcerto>().CalculaColisores(out quantidade);
@@ -78,6 +78,7 @@ public class ChecaColisao : MonoBehaviour
             }else{
                 textoFalha.text = quantidade.ToString() + " pontos estão na posição correta";
             }
+            Camera.main.GetComponent<Pontuacao>().aberturas++;
             print("apenas " + quantidade + " colidiram");
         }
     }

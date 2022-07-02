@@ -11,6 +11,7 @@ public class CriaPontosAdicionais : MonoBehaviour
     public Canvas cv;
     public GameObject cameraPrincipal;
     public Button botaoAdiciona;
+    public GameObject qtdPontos;
     // List<PontosClicaveis> pontos = new List<PontosClicaveis>();
     List<Vector3> medias = new List<Vector3>();
     Dictionary<PontoTemporario, int> dictPontoTemp = new Dictionary<PontoTemporario, int>();
@@ -37,9 +38,12 @@ public class CriaPontosAdicionais : MonoBehaviour
 
     public void CriaPossiveisPontos()
     {
-        pegaTodasBolinhas();
-        TiraMediaPontos();
-        instanciaPossivelPonto();
+        if(qtdPontos.GetComponent<ContadorPontosAdicionais>().qtdPontos > 0)
+        {
+            pegaTodasBolinhas();
+            TiraMediaPontos();
+            instanciaPossivelPonto();
+        }
     }
 
     void pegaTodasBolinhas()
@@ -98,6 +102,7 @@ public class CriaPontosAdicionais : MonoBehaviour
                 verticesClicaveis.transform.position = kvp.Key.posicao;
                 verticesClicaveis.GetComponent<ScriptPontoTemporario>().canvas = cv;
                 verticesClicaveis.GetComponent<ScriptPontoTemporario>().pt = kvp.Key;
+                verticesClicaveis.GetComponent<ScriptPontoTemporario>().qtdPontos = qtdPontos;
                 kvp.Key.go = verticesClicaveis;
             }
         }

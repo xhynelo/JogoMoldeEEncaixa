@@ -10,10 +10,12 @@ public class ScriptPontoTemporario : MonoBehaviour
     public PontoTemporario pt;
 
     public bool ehVertices = false;
+    public GameObject qtdPontos;
 
     void OnMouseDown()
     {
         print("oie");
+        qtdPontos.GetComponent<ContadorPontosAdicionais>().decrementaQuantidade();
         canvas.SendMessage("deletaPontosTemporariosNaoEscolhidos", pt);
     }
 
