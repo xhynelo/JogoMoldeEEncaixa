@@ -30,6 +30,12 @@ public class MudaCenaJogo : MonoBehaviour
         SceneManager.LoadScene("Jogo");
     }
 
+    public void mudaCenaJogo(int fase)
+    {
+        InfoFases.jogoAtual = fase;
+        SceneManager.LoadScene("Jogo");
+    }
+
     public void voltaCena()
     {
         if(SceneManager.GetActiveScene().Equals(SceneManager.GetSceneByBuildIndex(2)))
