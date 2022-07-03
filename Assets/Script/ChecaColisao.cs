@@ -64,7 +64,12 @@ public class ChecaColisao : MonoBehaviour
         {
             
             checkAcerto.SetActive(true);
-                
+            
+            int estrelas = Camera.main.GetComponent<Pontuacao>().estrelas;
+            if(InfoFases.salvos.intArray[InfoFases.jogoAtual] < estrelas)
+            {
+                InfoFases.salvos.intArray[InfoFases.jogoAtual] = estrelas;
+            }
             
             print("todosColidiram");
         }else{
@@ -78,6 +83,7 @@ public class ChecaColisao : MonoBehaviour
             Camera.main.GetComponent<Pontuacao>().aberturas++;
             print("apenas " + quantidade + " colidiram");
         }
+        SaveLoad.SaveGame();
     }
 }
 ; 

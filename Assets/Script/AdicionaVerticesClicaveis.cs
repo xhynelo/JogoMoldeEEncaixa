@@ -77,6 +77,14 @@ public class AdicionaVerticesClicaveis : MonoBehaviour
         float rotacao = jogo.rotacao;
         float deltaAngulo = 2*Mathf.PI / qtdLados;
         float raio = jogo.raio;
+        // if(qtdLados == 3)
+        // {
+        //     PontosClicaveis ponto01 = adicionaNoPontos(new Vector3(raio*Mathf.Cos(0), raio*Mathf.Sin(0), 0));
+        //     PontosClicaveis ponto03 = adicionaNoPontos(new Vector3(raio*Mathf.Cos(120), raio*Mathf.Sin(120), 0));
+        //     PontosClicaveis ponto02 = adicionaNoPontos(new Vector3(raio*Mathf.Cos(240), raio*Mathf.Sin(240), 0));
+        //     triangulos.Add(new Face(ponto01, ponto02, ponto03));
+        //     return;
+        // }
         PontosClicaveis ponotAnterior = adicionaNoPontos(new Vector3(raio*Mathf.Cos(rotacao), raio*Mathf.Sin(rotacao), 0));
         PontosClicaveis ponto1 = ponotAnterior;
         for(int i = 1; i < qtdLados; i++)
@@ -224,6 +232,7 @@ public class AdicionaVerticesClicaveis : MonoBehaviour
 
     public PontosClicaveis criarPontoClicavel(PontoTemporario pt)
     {
+        
         PontosClicaveis ponto = new PontosClicaveis(pt.posicao);
         List<Face> removidas = new List<Face>();
         List<List<PontosClicaveis>> novasFaces = new List<List<PontosClicaveis>>();
