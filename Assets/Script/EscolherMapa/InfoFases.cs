@@ -15,7 +15,7 @@ public class InfoFases
     public static List<Jogo> jogos = new List<Jogo>{
         new Jogo(desenho1(), 4, 45, 3, 6, 8),
         new Jogo(estrela(), 3, 330, 4, 7, 10),
-        new Jogo(barco(), 6, 0, 5, 10, 15),
+        new Jogo(barco(), 3, 330, 5, 10, 15),
         new Jogo(aviao(),4, 45, 4, 7, 10),
         new Jogo(borboleta(), 6, 0, 6, 10, 13)
     };
@@ -168,12 +168,12 @@ public class InfoFases
     {
         float deslocamento = 0;
         List<Vector3> pontos = new List<Vector3>();
-        pontos.Add(new Vector3(deslocamento + -7.780818669542782f, 0.9123324963932968f, 0.0f));
-        pontos.Add(new Vector3(deslocamento + 2.08219355163134f, -3.8000000000000007f, 0.0f));
-        pontos.Add(new Vector3(deslocamento + 4.054792926700699f, -1.717807055265787f, 0.0f));
-        pontos.Add(new Vector3(deslocamento + 7.452052959577184f, -1.4986296262900904f, 0.0f));
-        pontos.Add(new Vector3(deslocamento + 6.684928507518588f, 1.6794487293308178f, 0.0f));
-        pontos.Add(new Vector3(deslocamento + 7.780818669542782f, 4.2f, 0.0f));
+        pontos.Add(new Vector3(deslocamento + -6.0f, 0.7492988797039954f, 0.0f));
+        pontos.Add(new Vector3(deslocamento + 1.605635838641407f, -2.8845083299454783f, 0.0f));
+        pontos.Add(new Vector3(deslocamento + 3.1267606396530776f, -1.278872959298882f, 0.0f));
+        pontos.Add(new Vector3(deslocamento + 5.746479857252669f, -1.1098593079459895f, 0.0f));
+        pontos.Add(new Vector3(deslocamento + 5.154929416632769f, 1.34084298233704f, 0.0f));
+        pontos.Add(new Vector3(deslocamento + 6.0f, 3.2845083299454783f, 0.0f));
         return pontos;
     }
 

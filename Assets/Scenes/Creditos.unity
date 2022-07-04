@@ -901,8 +901,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Produ\xE7\xE3o\n\nMarcelo Nicolaci Pimentel\n\nJogo para mat\xE9ria de
-    Jogos Digitais\n\nUniversade Federal Fluminense"
+  m_Text: "Produ\xE7\xE3o\n\nMarcelo Nicolaci Pimentel\n\n\nJogo para mat\xE9ria
+    de Jogos Digitais\n\nUniversade Federal Fluminense"
 --- !u!222 &1827294126
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -949,7 +949,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.1764706, g: 0.31764707, b: 0.34117648, a: 1}
+  m_BackGroundColor: {r: 0.31148094, g: 0.5054137, b: 0.5377358, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
